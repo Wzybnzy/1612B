@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .list >li>span:nth-child(1),.allCheck >span:nth-child(1){
+        height: 30px;
+        width: 30px;
+        background: #ccc;
+        display: inline-block;
+    }
+    .list >li>span.active,.allCheck >span.active{
+        background: red;
+    }
+</style>
+<body>
+    <div id="app">
+        <ul class="list">
+            <li v-for="(item,index) in list">
+                <span :class="{active: item.flag}" @click="spanClick(item)"></span>
+                <span>{{item.name}}</span>
+            </li>
+            <!-- <li>
+                <span></span>
+                <span>香蕉</span>
+            </li> -->
+        </ul>
+        <div class="allCheck">
+            <span :class="{active:allFlag}" @click="allFn"></span>
+            <span>全选</span>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            allFlag:false,
+            list:[
+                {
+                    name:'苹果',
+                    flag:false
+                },
+                {
+                    name:'香蕉',
+                    flag:false
+                }, {
+                    name:'橘子',
+                    flag:false
+                }
+            ]
+        },
+        methods: {
+            spanClick(item){
+                item.flag = !item.flag;
+                console.log(this.list.every(item => item.flag));
+                this.allFlag = this.list.every(item => item.flag);
+            },
+            allFn(){
+                this.allFlag = !this.allFlag;
+                this.list.forEach(item => item.flag = this.allFlag);
+            }
+        },
+    });
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+<body>
+    <div id="app" v-cloak>
+        <!-- <input type="text" :value="val" @input="val = $event.target.value"> -->
+        <input type="text" v-model="val">
+        <p>你输入的是:{{val}}</p>
+
+        <select v-model="age">
+            <option :value="item" v-for="(item,index) in agearr">{{item}}</option>
+        </select>
+        <p>你选择的年龄是：{{age}}</p>
+
+        <input type="text" v-model="grade">
+        <p @click="btnClick($event)">{{grade}}</p>
+        <div v-if="grade >= 90">该生优秀</div>
+        <div v-else-if="grade >= 80 && grade < 90">该生良好</div>
+        <div v-else-if="grade >= 60 && grade < 80">该生及格</div>
+        <div v-else>该生不及格</div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            val:'111',
+            age:18,
+            grade:80,
+            agearr:[18,19,20]
+        },
+        methods: {
+            btnClick(e){
+                console.log('btnClick',e,this,this.grade);
+            }
+        },
+    });
+</script>
+</html>

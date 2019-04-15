@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    header{
+        height: 44px;
+        width: 100%;
+        display: flex;
+    }
+    header>span{
+        display: inline-block;
+        flex: 1;
+        height: 44px;;
+        line-height: 44px;
+        text-align: center;
+    }
+    header>span.active{
+        background: red;
+        color: #fff;
+    }
+</style>
+<body>
+    <div id="app">
+        <header>
+            <span v-for="(item,index) in list" :class="['current',{active: index == cur}]" @click="titleClick(index)">{{item.title}}</span>
+            <!-- <span>推荐</span> -->
+        </header>
+        <ul>
+            <!-- :style   数组：多个样式对象应用到同一个元素上，对象：{属性名:变量} -->
+            <li v-for="(item1,index1) in list[cur].news" :style="[{color:isColor,fontSize:'18px'},styleObj]">{{item1.newTitle}}</li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            cur:0,
+            isColor:'red',
+            styleObj:{
+                height:'44px'
+            },
+            list:[
+                {
+                    title:"新闻",
+                    news:[
+                        {
+                            newTitle:'向奔驰女车主收1.5万元，这笔金融服务费名正言顺吗1'
+                        },
+                        {
+                            newTitle:'向奔驰女车主收1.5万元，这笔金融服务费名正言顺吗2'
+                        },
+                        {
+                            newTitle:'向奔驰女车主收1.5万元，这笔金融服务费名正言顺吗3'
+                        }
+                    ]
+                },
+                {
+                    title:"推荐",
+                    news:[
+                        {
+                            newTitle:'向奔驰女车主收1.5万元，这笔金融服务费名正言顺吗4'
+                        },
+                        {
+                            newTitle:'向奔驰女车主收1.5万元，这笔金融服务费名正言顺吗5'
+                        },
+                        {
+                            newTitle:'向奔驰女车主收1.5万元，这笔金融服务费名正言顺吗6'
+                        }
+                    ]
+                }
+            ]
+        },
+        methods: {
+            titleClick(ind){
+                console.log(ind);
+                this.cur = ind;
+            }
+        },
+    });
+</script>
+</html>
