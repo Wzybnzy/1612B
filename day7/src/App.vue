@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <h3>{{grade}}</h3>
-        <p>{{count}}</p>
-        <button @click="add">点击</button>
-        <img :src="item" alt="" v-for="(item,index) in img" :style="style" :key="index">
+    <div class="app">
+       <list :grade="grade" :count="count" :styles="style" :img="img" @addCount="add"></list>
+       <!-- <list></list>
+       <list></list> -->
     </div>
 </template>
-
 <script>
+//第一步引入组件
+import list from './components/list';
 export default {
-    data() {
+    data(){
         return {
             grade: "1612B",
             count: 40,
@@ -19,22 +19,20 @@ export default {
                 display: "inline-block"
             },
             img: [
-                "https://paimgcdn-feed.baidu.com/v.4127BB91C84B5EEF05FE8D788E079822?src=http%3A%2F%2Fms.bdimg.com%2Fdsp-image%2F2212069328.jpg&rz=sar_3_370_245",
-                "https://paimgcdn-feed.baidu.com/v.DAC464DDD8BBD0025207986C663AF741?src=http%3A%2F%2Fms.bdimg.com%2Fdsp-image%2F2212094894.jpg&rz=sar_3_370_245",
-                "https://paimgcdn-feed.baidu.com/v.FB3E4587AA66AFBB33C9A3F363EA6FB3?src=http%3A%2F%2Fms.bdimg.com%2Fdsp-image%2F2212073396.jpg&rz=sar_3_370_245"
+                "https://t11.baidu.com/it/u=3139249624,1759339035&fm=173&app=49&f=JPEG?w=218&h=146&s=66F1C27E48C0CC4906AB8FA90200E00E",
+                "http://fc-feed.cdn.bcebos.com/0/pic/74006a1d084c21080e2f5238836b2251.jpg",
+                "http://fc-feed.cdn.bcebos.com/0/pic/4cd8b4075fa60d4cd2c9e6cc61c99a3f.jpg"
             ]
-        };
-    },
-    methods:{
-        add(){
-            this.count++;
         }
     },
-    computed:{
-
+    components:{ //第二步注册组件，第三步使用组件
+        list
     },
-    created(){
-
+    methods:{
+        add(count,ind){
+            // console.log(count,ind);
+            this.count++;
+        }
     }
-};
+}
 </script>
