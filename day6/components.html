@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h3>{{grade}}</h3>
+        <!-- <my-header></my-header>
+        <my-header></my-header>
+        <my-header></my-header>
+        <my-header></my-header> -->
+        <my-header />
+    </div>
+    
+    <div id="box">
+        <my-header></my-header>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    //全局注册
+    Vue.component('my-header',{
+        template:'<div><ol><li>{{title}}</li></ol><span>哈哈哈</span></div>',
+        data(){ //组件里面，data是一个方法，需要return一个对象出来
+            return {
+                title:'34402'
+            }
+        }
+    });
+
+    new Vue({
+        el:'#app',
+        data:{
+            grade:'1612B'
+        }
+    });
+
+    new Vue({
+        el:'#box'
+    });
+</script>
+</html>

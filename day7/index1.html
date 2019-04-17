@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <header></header>
+        <my-header></my-header>
+        <my-body></my-body>
+        <my-body></my-body>
+        <my-body></my-body>
+    </div>
+
+    <div id="box">
+        <my-header></my-header>
+        <!-- <my-body></my-body> -->
+    </div>
+    <!-- 不会编译到页面 -->
+    <template id="tpl">
+        <section>
+            <h3>{{grade}}</h3>
+            <p>{{count}}</p>
+            <button>点击</button>
+            <img :src="item" alt="" v-for="(item,index) in img" :style="style">
+        </section>
+    </template>
+
+</body>
+<!-- <script type="text/x-template" id="tpl1">
+    <section>
+            <ul>
+                <li>666</li>
+            </ul>
+            <dl>
+                <dt>
+                    积分卡士大夫
+                </dt>
+            </dl>
+    </section>
+</script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    //全局注册
+    Vue.component('my-header', {
+        template: '<div>{{grade}}<span>1111</span></div>',
+        data() {
+            return {
+                grade: '1612B'
+            }
+        }
+    });
+
+    //局部注册
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        components: {
+            'my-body': {
+                template: '#tpl',
+                data(){
+                    return {
+                        grade:'1612B',
+                        count:40,
+                        style:{
+                            height:'120px',
+                            width:'120px',
+                            display:'inline-block'
+                        },
+                        img:['https://paimgcdn-feed.baidu.com/v.4127BB91C84B5EEF05FE8D788E079822?src=http%3A%2F%2Fms.bdimg.com%2Fdsp-image%2F2212069328.jpg&rz=sar_3_370_245','https://paimgcdn-feed.baidu.com/v.DAC464DDD8BBD0025207986C663AF741?src=http%3A%2F%2Fms.bdimg.com%2Fdsp-image%2F2212094894.jpg&rz=sar_3_370_245','https://paimgcdn-feed.baidu.com/v.FB3E4587AA66AFBB33C9A3F363EA6FB3?src=http%3A%2F%2Fms.bdimg.com%2Fdsp-image%2F2212073396.jpg&rz=sar_3_370_245']
+                    }
+                }
+            }
+        }
+    });
+
+    new Vue({
+        el: '#box'
+    });
+</script>
+
+</html>

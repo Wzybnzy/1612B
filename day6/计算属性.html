@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{getY}}</div>
+       <ul>
+           <li v-for="item in getY">
+               <span>姓名：{{item.name}}</span>
+               <span>成绩：{{item.score[2]}}</span>
+           </li>
+       </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            subject:['语文','数学','英语','体育'],
+            scores:[
+                {name:'jake',score:[100,91,52,90]},
+                {name:'luce',score:[95,93,90,80]},
+                {name:'tom',score:[50,61,72,80]},
+                {name:'taix',score:[70,82,53,90]},
+            ]
+        },
+        computed: {
+            getY(){ //获取英语不及格的人
+                return this.scores.filter(item => item.score[2]<60);
+            }
+        },
+    });
+</script>
+</html>
