@@ -1,24 +1,20 @@
 <template>
-    <dl>
-        <dt>
-            班级：1612B
-        </dt>
-        <dd>
-            姓名：{{item}}
-        </dd>
-    </dl>
+    <li>
+        <span>商品名称：{{title}}</span>
+        <span>商品价格：{{price}}</span>
+        <my-count :count="count" :id="id"></my-count>
+    </li>
 </template>
 <script>
+import myCount from './count';
 export default {
-    props:{
-        item:String
-    },
+    props:['title','price','count','id'],
     components:{
-
+        myCount
     },
     data(){
         return {
-
+            
         }
     },
     computed:{
