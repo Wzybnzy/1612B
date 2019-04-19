@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const list = require('../src/data/list.json');
+const data = require('../src/data/data.json');
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -46,6 +47,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     before(app){
       app.get('/api/list',(req,res,next)=>{
         res.send(list);
+      });
+      app.get('/api/data',(req,res,next)=>{
+        res.send(data);
       });
     }
   },

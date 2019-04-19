@@ -1,66 +1,118 @@
 <template>
-  <div id="app">
-    <ul>
-        <my-list v-for="(item,index) in list" 
-        :key="index"
-        :title="item.title"
-        :price="item.price"
-        :count="item.count"
-        :id="item.id"
-        ></my-list>
-    </ul>
-  </div>
+    <div class="wrapper">
+        <div class="content">
+            <div class="left">
+                <ul>
+                    <li v-for="(item,index) in classify" :key="index" :class="{'active':index == ind}" @click="change(index,item.type)">{{item.title}}</li>
+                </ul>
+            </div>
+            <div class="right">
+                <my-list v-for="(item1,index1) in list" :key="index1"
+                :title="item1.title"
+                :price="item1.price"
+                :id="item1.id"
+                :num="item1.num"
+                :type="item1.type"
+                ></my-list>
+            </div>
+        </div>
+        <footer>
+            <span>总数：{{totalCount}}</span>
+            <span>总价：{{totalPrice}}</span>
+        </footer>
+    </div>
 </template>
-
 <script>
-import myList from './components/list';
+import classify from "./js/classify";
+import list from "./js/list";
+import myList from './components/my-list';
 export default {
-    name: "App",
-    data() {
-        return {
-            list:[
-                {
-                    title:'苹果',
-                    price:10,
-                    count:0,
-                    id:1
-                },
-                {
-                    title:'香蕉',
-                    price:5,
-                    count:0,
-                    id:2
-                }
-            ],
-            buyList:[]
-        };  
-    },
+    props: {},
     components: {
         myList
     },
-    methods:{
-     
+    data() {
+        return {
+            classify: [],
+            list: [],
+            buyList:[],
+            ind:0
+        };
     },
-    created(){
+    computed: {
+        totalPrice(){
+            return this.buyList.reduce((prev,cur) => prev + cur.num * cur.price,0);
+        },
+        totalCount(){
+            return this.buyList.reduce((prev,cur) => prev + cur.num ,0);
+        }
+    },
+    methods: {
+        getList(list,type){ //筛选数据
+            return list.filter(item => item.type == type);
+        },
+        change(ind,type){ //切换
+            this.ind = ind;
+            this.list = this.getList(list,type);
+        }
+    },
+    created() {
+        this.classify = classify;
+        this.list = this.getList(list,this.classify[0].type);
+        console.log(this);
         this.$bus.$on('addCount',(num,id)=>{
-            console.log(num,id);
-            let index = this.list.findIndex(item=>item.id == id);
-            this.list[index].count = num;
+            console.log(num);
+            let index = this.list.findIndex(item => item.id == id);
+            this.list[index].num = num;
+            let ind = this.buyList.findIndex(item => item.id == id);
+            if(ind == -1){
+                this.buyList.push(this.list[index]);
+            }
         });
-    }
+    },
+    mounted() {}
 };
 </script>
-
-<style lang="scss" >
-@import './scss/common.scss';
-@import './scss/_mixin.scss';
-#app {
-//     font-size: pxTorem(16px);
-//    @include box_flex;
-//    height: 100%;
-//    width: 100%;
-//    @include direction(column);
+<style  lang="">
+* {
+    list-style: none;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1;
+    width: 100%;
+    display: flex;
+}
+.left {
+    height: 100%;
+    width: 120px;
+    border-right: 1px solid #ccc;
+}
+.right {
+    flex: 1;
+    height: 100%;
+}
+li {
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+}
+li.active {
+    color: red;
+}
+footer {
+    height: 50px;
+    width: 100%;
+    border-top: 1px solid #ccc;
 }
 </style>
-
-
