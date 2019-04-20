@@ -18,11 +18,11 @@ export default {
     methods: {
         add() {
             let num = this.num + 1;
-            this.$bus.$emit("addCount", num,this.id);
+            this.$bus.$emit("addCount", num,this.id,this.type);
         },
         del() {
             let num = this.num - 1;
-            this.$bus.$emit("addCount", num,this.id);
+            this.$bus.$emit("addCount", num,this.id,this.type);
         }
     },
     created() {},
