@@ -1,0 +1,15 @@
+transition  过度动画  width
+transfrom : translate() rotate()  scale()   skew()
+
+transition: widtd 1s linear;
+width:100px;
+width:200;
+
+transition组件需要配合css一起使用
+
+
+进入/离开
+
+进入：   .v-enter .v-enter-active  .v-enter-to   
+
+
