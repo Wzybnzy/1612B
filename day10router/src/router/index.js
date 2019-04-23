@@ -7,38 +7,65 @@ import Discover from '@/views/discover'
 import Order from '@/views/order'
 import Profile from '@/views/profile'
 import Search from '@/views/search'
+import Shop from '@/views/shop'
+import Dican from '@/views/dican'
+import Comonent from '@/views/comonet'
+import Bussi from '@/views/bussi'
 
 Vue.use(Router)
 
-const routes= [
+const routes = [
   {
-    path:'/',
-    name:'home',
+    path: '/',
+    name: 'home',
     component: Home
   },
   {
-    path:'/discover',
-    name:'discover',
+    path: '/discover',
+    name: 'discover',
     component: Discover
   },
   {
-    path:'/order',
-    name:'order',
+    path: '/order',
+    name: 'order',
     component: Order
   }, {
-    path:'/profile',
-    name:'profile',
+    path: '/profile',
+    name: 'profile',
     component: Profile
   },
   {
-    path:'/search',
-    name:'search',
-    component:Search
+    path: '/search',
+    name: 'search',
+    component: Search
+  },
+  {
+    path: '/shop/:id',
+    name: 'shop',
+    component: Shop,
+    children: [
+      {
+        path: 'dican',
+        name: 'dican',
+        component: Dican
+      },
+      {
+        path: 'comonent',
+        name: 'comonent',
+        component: Comonent
+      },
+      {
+        path: 'bussi',
+        name: 'bussi',
+        component: Bussi
+      }
+    ]
   }
+
 ]
 
 const router = new Router({
-  mode:'history',
+  mode: 'hash',
   routes
 });
 

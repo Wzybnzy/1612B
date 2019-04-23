@@ -1,6 +1,6 @@
 <template>
-    <div>   
-        搜索页面{{$route.query.val}}
+    <div>
+        点餐
     </div>
 </template>
 <script>
@@ -23,7 +23,7 @@ export default {
 
     },
     created(){
-        console.log(this.$route);
+
     },
     mounted(){
 
