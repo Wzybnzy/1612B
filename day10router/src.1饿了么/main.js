@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Footer from './components/footer'
+import myFooter from './components/footer'
 Vue.config.productionTip = false
 
-Vue.component('Footer',Footer);
+Vue.component('myFooter',myFooter);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

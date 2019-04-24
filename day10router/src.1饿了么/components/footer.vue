@@ -1,10 +1,9 @@
 <template>
     <footer>
         <router-link to="/">首页</router-link>
-        <router-link to="/vedio">菜单</router-link>
-        <router-link to="/news">订单</router-link>
-        <router-link to="/frum">购物车</router-link>
-        <router-link to="/list">我的</router-link>
+        <router-link to="/discover">发现</router-link>
+        <router-link to="/order">订单</router-link>
+        <router-link to="/profile">我的</router-link>
     </footer>
 </template>
 <script>

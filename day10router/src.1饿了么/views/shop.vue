@@ -9,7 +9,6 @@
             </ul>
             <keep-alive include="dican">
                 <router-view></router-view>
-            
             </keep-alive>
         </div>
         <!-- <my-footer></my-footer> -->

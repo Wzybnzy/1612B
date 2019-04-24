@@ -1,10 +1,6 @@
 <template>
-    <div class="page">
-        <div>
-           
-            <router-view></router-view>
-        </div>
-        <Footer />
+    <div>
+        <input type="text">
     </div>
 </template>
 <script>
@@ -35,14 +31,5 @@ export default {
 }
 </script>
 <style scoped lang="">
-.list{
-    height: 44px;
-    display: flex;
-    background: burlywood;
-}
-.list li{
-    flex: 1;
-    text-align: center;
-    line-height: 44px;
-}
+
 </style>

@@ -31,12 +31,8 @@ html,body,#app{
 
 }
 .page{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.page > div{
   flex: 1;
+  width: 100%;
 }
 footer{
   height: 50px;

@@ -1,7 +1,13 @@
 <template>
     <div class="page">
         <div>
-           
+            <ul class="list">
+                <li @click="$router.push({name:'newest'})">最新</li>
+                <li @click="$router.push({name:'follow'})">关注</li>
+                <li @click="$router.push({name:'hottest'})">热门</li>
+                <li>NBA</li>
+                <li>CBA</li>
+            </ul>
             <router-view></router-view>
         </div>
         <Footer />
