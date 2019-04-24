@@ -1,15 +1,18 @@
 <template>
     <div>
-        <div class="page">
+        <div class="page pageshop">
            <h3>店铺{{$route.params.id}}</h3>
             <ul class="title">
                 <li @click="$router.push({name:'dican'})">点餐</li>
                 <li @click="$router.push({name:'comonent'})">评价</li>
                 <li @click="$router.push({name:'bussi'})">商家</li>
             </ul>
-            <router-view></router-view>
+            <keep-alive include="dican">
+                <router-view></router-view>
+            
+            </keep-alive>
         </div>
-        <my-footer></my-footer>
+        <!-- <my-footer></my-footer> -->
     </div>
 </template>
 <script>
@@ -67,5 +70,9 @@ export default {
     flex:1;
     text-align: center;
     line-height: 44px;
+}
+.pageshop{
+    display: flex;
+    flex-direction: column;
 }
 </style>
