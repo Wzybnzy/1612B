@@ -7,32 +7,28 @@
         :id="item.id"
         ></my-list>
         <div>总价：{{getTotalPrice}}</div>
-        <!-- {{getList}} -->
-        <h3>下边是购物车的数据</h3>
-        <my-car></my-car>
     </div>
 </template>
 <script>
-import myList from '../components/my-list';
-import myCar from '../components/car';
+import myList from './my-list';
 import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
 export default {
     props:{
 
     },
     components:{
-        myList,
-        myCar
+        myList
     },
     data(){
         return {
-            
+
         }
     },
     computed:{
         ...mapGetters(['getList','getTotalPrice'])
     },
     methods:{
+
     },
     created(){
 

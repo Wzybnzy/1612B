@@ -1,12 +1,11 @@
 <template>
     <div>
-        <div>这是del组件的数据：{{$store.state.count}}</div>
-        <button @click="del">递减</button>
-        <div>{{getList}}</div>
+        <div>这是add组件的数据:{{$store.state.count}}</div>
+        <button @click="add">递增</button>
+        <!-- <div>{{$store.getters.getList}}</div> -->
     </div>
 </template>
 <script>
-import {mapGetters} from 'vuex';
 export default {
     props:{
 
@@ -20,14 +19,15 @@ export default {
         }
     },
     computed:{
-        ...mapGetters(['getList']),
         // getList(){
         //     return this.$store.state.list.filter(item => item.count >30);
         // }
     },
     methods:{
-        del(){
-            this.$store.commit('del');
+        add(){
+            console.log(this);
+            this.$store.commit('add',5);
+            // this.$store.state.count++;
         }
     },
     created(){

@@ -9,42 +9,38 @@ export default new Vuex.Store({
         count:1,
         list:[
             {
-                grade:'1612B',
-                count:40
+                title:'香蕉',
+                price:10,
+                num:1,
+                id:1
             },
             {
-                grade:'1701C',
-                count:24
-            },
-            {
-                grade:'1612A',
-                count:39
+                title:'苹果',
+                price:12,
+                num:1,
+                id:2
             }
         ]
     },
-    mutations:{
-        add(state){
-            // state.count += num;
-            // console.log(666);
-                state.count++;
-            // setTimeout(()=>{
-            // },2000);
+    getters:{
+        getList(state){
+            return state.list;
         },
-        del(state){
-            state.count--;
+        getTotalPrice(state){
+            return state.list.reduce((prev,cur) => prev + cur.num * cur.price,0);
         }
     },
-    getters:{ 
-      getList(state){
-          return state.list.filter(item => item.count>30);
-      }  
-    },
-    actions:{
-        addActions(context){
-            console.log(context);
-            setTimeout(()=>{
-                context.commit('add');
-            },2000);
+    mutations:{
+        add(state,id){
+            let index = state.list.findIndex(item => item.id == id);
+            state.list[index].num++;
+        },
+        del(state,id){
+            let index = state.list.findIndex(item => item.id == id);
+            state.list[index].num--;
         }
     }
+
+    
+   
 });

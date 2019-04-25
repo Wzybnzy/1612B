@@ -2,11 +2,9 @@
     <div>
         <div>这是del组件的数据：{{$store.state.count}}</div>
         <button @click="del">递减</button>
-        <div>{{getList}}</div>
     </div>
 </template>
 <script>
-import {mapGetters} from 'vuex';
 export default {
     props:{
 
@@ -20,10 +18,9 @@ export default {
         }
     },
     computed:{
-        ...mapGetters(['getList']),
-        // getList(){
-        //     return this.$store.state.list.filter(item => item.count >30);
-        // }
+        getList(){
+            return this.$store.state.list.filter(item => item.count >30);
+        }
     },
     methods:{
         del(){
