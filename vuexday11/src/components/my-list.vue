@@ -1,14 +1,17 @@
 <template>
-    <li>
-        <p>商品名：{{title}}</p>
-        <p>商品价格：{{price}}</p>
-        <my-count :num="num" :id="id"></my-count>
-    </li>
+   <dl>
+       <dt></dt>
+       <dd>
+           <p>商品：{{title}}</p>
+           <p>价格：{{price}}</p>
+           <my-count :num="num" :id="id" :type="type"></my-count>
+       </dd>
+   </dl>
 </template>
 <script>
 import myCount from './count';
 export default {
-    props:['title','price','num','id'],
+    props:['title','price','id','num','type'],
     components:{
         myCount
     },
@@ -32,5 +35,13 @@ export default {
 }
 </script>
 <style scoped lang="">
-
+    dl{
+        display: flex;
+        margin-bottom: 10px;
+    }
+    dt{
+        height: 120px;
+        width: 120px;
+        background: cadetblue;
+    }
 </style>

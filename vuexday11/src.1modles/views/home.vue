@@ -3,6 +3,7 @@
         <div>$store:{{$store.state.count}}</div>
         <div>computed:{{countComputed}}</div>
         <div>mapState:{{count}}</div>
+        <div>mapStategetCount:{{getCount}}</div>
 
 
         <div>{{$store.getters.getList}}</div>
@@ -11,16 +12,23 @@
 
         <button @click="addFn({grade:'1611A',count:39})">添加</button>
         <button @click="addCount(5)">添加count</button>
+
+
+        <my-add></my-add>
+        <my-del></my-del>
     </div>
 </template>
 <script>
 import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
+import myAdd from '../components/add';
+import myDel from '../components/del';
 export default {
     props:{
 
     },
     components:{
-
+        myAdd,
+        myDel
     },
     data(){
         return {
@@ -28,8 +36,11 @@ export default {
         }
     },
     computed:{
+        // count(){
+        //     return this.$store.state.list.filter()
+        // },
         ...mapState(['count','list']),// {count(){},list(){}}
-        ...mapGetters(['getList','getLength']),
+        ...mapGetters(['getList','getLength','getCount']),
       
     //    count(){},
     //    list(){},

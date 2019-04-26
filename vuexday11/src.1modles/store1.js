@@ -20,7 +20,9 @@ export default new Vuex.Store({
                 grade:'1612A',
                 count:39
             }
-        ]
+        ],
+        list1:[],
+        list2:[]
     },
     getters:{
         getList(state){
@@ -28,7 +30,11 @@ export default new Vuex.Store({
         },
         getLength(state,getters){
             return getters.getList.length;
+        },
+        getCount(state){
+            return state.count;
         }
+
     },
     mutations:{
         addFn(state,obj){
@@ -38,7 +44,11 @@ export default new Vuex.Store({
         add(state,num){
             // state.count++;
             state.count+=num;
+        },
+        del(state){
+            state.count--;
         }
+
     },
     actions:{ //异步
         addCount({commit},num){

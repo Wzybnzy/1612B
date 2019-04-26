@@ -1,0 +1,30 @@
+export default [
+    {
+        title:"酸菜鱼",
+        price:10,
+        num:0,
+        id:3,
+        type:'one'
+    },
+    {
+        title:"巴沙鱼",
+        price:5,
+        num:0,
+        id:4,
+        type:'one'
+    },
+    {
+        title:"花生米",
+        price:2,
+        num:0,
+        id:5,
+        type:'two'
+    },
+    {
+        title:"拍黄瓜",
+        price:5,
+        num:0,
+        id:6,
+        type:'two'
+    }
+]
