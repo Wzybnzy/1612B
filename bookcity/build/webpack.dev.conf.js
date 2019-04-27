@@ -10,6 +10,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+const home = require('../src/data/home.json');
+const recommend1 = require('../src/data/recommend1.json');
+
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -42,6 +45,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    before(app){
+      app.get('/api/home',(req,res,next)=>{
+        res.send(home);
+      });
+      app.get('/api/recommend1',(req,res,next)=>{
+        res.send(recommend1);
+      });
     }
   },
   plugins: [
