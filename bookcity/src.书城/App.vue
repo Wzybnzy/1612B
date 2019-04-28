@@ -17,16 +17,4 @@ export default {
   padding: 0;
   list-style: none;
 }
-html,body,#app{
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-#app>div{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  
-}
 </style>
