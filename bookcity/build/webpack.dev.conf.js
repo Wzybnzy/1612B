@@ -9,9 +9,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const bodyParser = require('body-parser')
 
 const home = require('../src/data/home.json');
 const recommend1 = require('../src/data/recommend1.json');
+const detail = require('../src/data/detail.json');
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -47,11 +49,28 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before(app){
+      app.use(bodyParser.json());
       app.get('/api/home',(req,res,next)=>{
         res.send(home);
       });
       app.get('/api/recommend1',(req,res,next)=>{
         res.send(recommend1);
+      });
+      app.get('/api/detail',(req,res,next)=>{
+        // res.send();
+        if(req.query.id == '352876'){
+          res.send({code:1,data:detail});
+        } else {
+          res.send({code:0,mes:'没有该书本的详情'});
+        }
+      });
+      app.post('/api/login',(req,res,next)=>{
+        console.log(req.body);
+        if(req.body.name == 'zs' && req.body.pwd == '1234'){
+           res.send({code:1,mes:'登录成功'});
+        } else {
+          res.send({code:0,mes:'登录失败'});
+        }
       });
     }
   },

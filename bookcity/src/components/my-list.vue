@@ -1,5 +1,5 @@
 <template>
-    <dl :class="classname">
+    <dl :class="classname" @click="goToDetail(id)">
         <dt>
             <img v-lazy="img" alt="">
         </dt>
@@ -17,7 +17,12 @@ export default {
         return {};
     },
     computed: {},
-    methods: {},
+    methods: {
+        goToDetail(id){
+            console.log(id);
+            this.$router.push({name:'detail',params:{id:id},query:{title:this.title}});
+        }
+    },
     created() {},
     mounted() {}
 };
