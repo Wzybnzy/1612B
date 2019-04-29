@@ -1,17 +1,13 @@
 <template>
   <div id="app">
+    <!-- <img src="./assets/logo.png"> -->
     <router-view/>
-    <my-footer></my-footer>
   </div>
 </template>
 
 <script>
-import myFooter from './components/footer';
 export default {
-  name: 'App',
-  components:{
-    myFooter
-  }
+  name: 'App'
 }
 </script>
 
@@ -25,11 +21,11 @@ html,body,#app{
   height: 100%;
   width: 100%;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 #app>div{
-  flex:1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
   
 }

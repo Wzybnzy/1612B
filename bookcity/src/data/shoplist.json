@@ -1,0 +1,23 @@
+[
+    {
+        "img":"../../static/shop1.png",
+        "title":"鸡胗",
+        "content":"好吃",
+        "price":10,
+        "id":1
+    },
+    {
+        "img":"../../static/shop2.png",
+        "title":"鸡柳",
+        "content":"肉多",
+        "price":12,
+        "id":2
+    },
+    {
+        "img":"../../static/shop3.png",
+        "title":"蜂蜜",
+        "content":"甜的",
+        "price":15,
+        "id":3
+    }
+]

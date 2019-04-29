@@ -1,53 +1,46 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import axios from 'axios';
-
+import Vue from 'vue'
+import Vuex from 'vuex'
 Vue.use(Vuex);
 
 
 export default new Vuex.Store({
     state:{
-        list:[],
         buyList:[]
     },
     getters:{
-        getlistGetters(state){
-            console.log('getters');
-            return state.list;
-        },
-        getTotalPrice(state){
-            let sum = 0;
-            state.list.forEach(item => {
-               sum += item.res.reduce((prev,cur) => prev + cur.num * cur.price,0);
-            });
-            return sum.toFixed(2);
-        },
         getBuyList(state){
             return state.buyList;
+        },
+        getTotalCount(state){
+            return state.buyList.reduce((prev,cur)=> prev + cur.count,0);
+        },
+        getTotalPrice(state){
+            // return state.buyList.reduce((prev,cur)=> prev + cur.count* cur.price,0);
+            // state.buyList.forEach(item => {
+            //     if(item.flag){
+
+            //     }
+            // });
+
+           return state.buyList.filter(item => item.flag).reduce((prev,cur) => prev + cur.count * cur.price,0)
         }
     },
     mutations:{
-        getlistMutations(state,arr){
-            console.log('getlistMutations');
-            state.list = arr;
-        },
-        add(state,{ind,index,n}){
-            console.log(ind,index);
-            state.list[ind].res[index].num = n;
-            let id = state.list[ind].res[index].id;
-            let current = state.buyList.findIndex(item => item.id == id);
-            if(current == -1){
-                state.buyList.push(state.list[ind].res[index]);
+        shop(state,obj){
+            let index = state.buyList.findIndex(item => item.id == obj.id);
+            if(index == -1){
+                state.buyList.push(obj);
             }
             console.log(state.buyList);
+        },
+        checkClick(state,ind){
+            state.buyList[ind].flag = !state.buyList[ind].flag;
+        },
+        allClickMuTations(state,flag){
+            state.buyList.forEach(item => item.flag = flag);
         }
     },
     actions:{
-        getList({commit}){
-            console.log('actions');
-            axios.get('/api/list').then((res)=>{
-                commit('getlistMutations',res.data);
-            });
-        }
+
     }
-});
+})
