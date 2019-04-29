@@ -1,10 +1,9 @@
 <template>
     <div>
-       <div>
-           我的
-       </div>
-
-    <my-footer></my-footer>
+        <div>
+            特惠
+        </div>
+        
     </div>
 </template>
 <script>

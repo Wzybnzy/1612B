@@ -1,10 +1,6 @@
 <template>
     <div>
-       <div>
-           我的
-       </div>
-
-    <my-footer></my-footer>
+        我的
     </div>
 </template>
 <script>

@@ -1,8 +1,9 @@
 <template>
     <div>
-       <div>
-           我的
-       </div>
+        <div>
+        影院
+
+        </div>
 
     <my-footer></my-footer>
     </div>

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
+    <my-footer></my-footer>
   </div>
 </template>
 
@@ -28,13 +29,8 @@ html,body,#app{
   flex-direction: column;
 }
 #app>div{
-  display: flex;
-  height: 100%;
-  flex-direction: column;
+  flex:1;
   width: 100%;
   
-}
-#app>div>div{
-  flex: 1;
 }
 </style>

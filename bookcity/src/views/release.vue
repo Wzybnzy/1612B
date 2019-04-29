@@ -1,10 +1,6 @@
 <template>
     <div>
-       <div>
-           我的
-       </div>
-
-    <my-footer></my-footer>
+        上映
     </div>
 </template>
 <script>
