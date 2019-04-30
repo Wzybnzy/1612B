@@ -1,12 +1,13 @@
 <template>
     <div>
         <div class="page">
-            我的
+            {{getListGetters}}
         </div>
         <my-footer></my-footer>
     </div>
 </template>
 <script>
+import {mapGetters} from 'vuex';
 export default {
     props:{
 
@@ -20,7 +21,7 @@ export default {
         }
     },
     computed:{
-
+        ...mapGetters(['getListGetters'])
     },
     methods:{
 
