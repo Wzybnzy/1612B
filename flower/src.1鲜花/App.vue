@@ -21,5 +21,14 @@ export default {
  width: 100%;
 
 }
-
+#app>div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.page{
+  flex: 1;
+  width: 100%;
+}
 </style>

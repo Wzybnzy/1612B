@@ -1,9 +1,10 @@
 <template>
-    <div class="page">
-        <button @click="goToAnswer">开始答题</button>
-    </div>  
+    <div>
+        最后一页,回答正确了题{{getLength}}
+    </div>
 </template>
 <script>
+import {mapState,mapGetters} from 'vuex';
 export default {
     props:{
 
@@ -17,12 +18,11 @@ export default {
         }
     },
     computed:{
-
+        ...mapState(['list']),
+        ...mapGetters(['getLength'])
     },
     methods:{
-        goToAnswer(){
-            this.$router.push({path:'/answer'});
-        }
+
     },
     created(){
 
@@ -33,13 +33,5 @@ export default {
 }
 </script>
 <style scoped lang="">
-.page{
-    height: 100%;
-    width: 100%;
 
-}
-button{
-    height: 44px;
-    width: 120px;
-}
 </style>

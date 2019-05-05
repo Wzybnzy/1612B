@@ -1,9 +1,13 @@
 <template>
-    <div class="page">
-        <button @click="goToAnswer">开始答题</button>
-    </div>  
+    <div>
+        <div class="page">
+            {{getListGetters}}
+        </div>
+        <my-footer></my-footer>
+    </div>
 </template>
 <script>
+import {mapGetters} from 'vuex';
 export default {
     props:{
 
@@ -17,12 +21,10 @@ export default {
         }
     },
     computed:{
-
+        ...mapGetters(['getListGetters'])
     },
     methods:{
-        goToAnswer(){
-            this.$router.push({path:'/answer'});
-        }
+
     },
     created(){
 
@@ -33,13 +35,5 @@ export default {
 }
 </script>
 <style scoped lang="">
-.page{
-    height: 100%;
-    width: 100%;
 
-}
-button{
-    height: 44px;
-    width: 120px;
-}
 </style>
