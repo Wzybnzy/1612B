@@ -5,9 +5,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         index: 0,//第几题
-        ind: Number,
-        sureFlag: null,//正确答案展示
-        chooseInd: null,
+        ind: Number, //第几项被选中
         answerList: [
             {
                 title: '以下不属于我国年画重要产地的是？',
